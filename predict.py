@@ -1,26 +1,27 @@
 import argparse
 import numpy as np
 import pandas as pd
-
+import ast
+from pycaret.classification import *
+from utils import preprocess
 
 # Parsing script arguments
 parser = argparse.ArgumentParser(description='Process input')
 parser.add_argument('tsv_path', type=str, help='tsv file path')
 args = parser.parse_args()
 
+
+
+
 # Reading input TSV
-data = pd.read_csv(args.tsv_path, sep="\t")
+data = preprocess(pd.read_csv(args.tsv_path, sep="\t"))
 
-#####
-# TODO - your prediction code here
 
-# Example:
-prediction_df = pd.DataFrame(columns=['id', 'revenue'])
-prediction_df['id'] = data['id']
-prediction_df['revenue'] = data['revenue'].mean()
-####
+model = load_model("extrees")
 
-# TODO - How to export prediction results
+predictions = predict_model(model, data= data)
+
+prediction_df = predictions[['id', 'revenue']]
 prediction_df.to_csv("prediction.csv", index=False, header=False)
 
 

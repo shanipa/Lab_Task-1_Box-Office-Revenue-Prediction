@@ -6,7 +6,7 @@
 * `train.tsv`, `test.tsv` - train and test data.
 ### In order to make prediction on new data you will need:
 1. Install all the packeges and dependncies as decribed in `environment.yml`
-2. use `predict.py` to predict the revanue of your desired moives:
- ``` python predict.py test.tsv ```
+2. use `predict.py` to predict the revanue of your desired moives: <br>
+ ``` python predict.py test.tsv ``` <br>
  the file will need `our_utils.py` for the preprocessing, and `extrees.pkl` to load the trained model and the transformations pipline
  3. you will find your prediction per movie id in a newly created file: `prediction.csv`
